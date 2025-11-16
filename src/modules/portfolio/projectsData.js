@@ -88,21 +88,6 @@ export const allProjects = [
     tech: ["React.js", "Bootstrap", "Redux"],
   },
   {
-    title: "ST Token Project",
-    logo: "/projects/st project/logo.png",
-    images: [
-      "/projects/st project/1.png",
-      "/projects/st project/2.png",
-      "/projects/st project/3.png",
-      "/projects/st project/4.png",
-    ],
-    description:
-      "I'm currently working on the frontend development of the ST Project, a platform where users can perform daily mining activities and build their binary team structure. The focus is on creating a seamless and interactive user interface to track earnings, team members, and mining progress. The project is being built using Next.js,Tailwind CSS, and TypeScript,Rest Api with UI components styled using RizzUI.",
-    liveLink:
-      "https://st-project-six.vercel.app/auth/login/",
-    tech: ["Next.js", "Tailwind css", "Rest Api", "RizzUI", "TypeScript","Cloudinary"],
-  },
-  {
     title: "InvexTech",
     logo: "/projects/invextech/logo.png",
     images: [
