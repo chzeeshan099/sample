@@ -1,72 +1,38 @@
-'use client'
-import { useRef } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
-import { IoArrowUpOutline } from 'react-icons/io5'
-import HeroSection from '@/modules/HeroSection'
-import AboutMe from '@/modules/About/AboutMe'
-import Skills from '@/modules/About/skills'
-import Projects from '@/modules/portfolio/projects'
-import Contact from '@/modules/contact/contact'
+"use client"
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
-  const scrollRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start start", "end end"]
-  })
-  
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return (
-    <main className="relative" ref={scrollRef}>
-      <motion.div
-        className="fixed top-[66px] left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-secondary to-accent origin-left z-50"
-        style={{ scaleX }}
+    <main className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+
+      {/* Logo */}
+      <Image
+        src="/images/react.svg"
+        alt="My Logo"
+        className="w-28 h-28 rounded-full shadow-md mb-4"
+        width={112}
+        height={112}
+
       />
-      <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-primary/5">
-        <HeroSection />
-      </section>
-      <section id="about" className="relative py-20">
-        <div className="absolute inset-0 bg-white/5 dark:bg-gray-900/50 backdrop-blur-sm" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          <AboutMe />
-          <Skills />
-        </div>
-      </section>
-      <section id="projects" className="relative py-20 bg-gradient-to-br from-background via-background to-secondary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Projects />
-        </div>
-      </section>
 
-      <section id="contact" className="relative py-20">
-        <div className="absolute inset-0 bg-white/5 dark:bg-gray-900/50 backdrop-blur-sm" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Contact />
-        </div>
-      </section>
+      <h1 className="text-3xl font-bold mb-2">
+        Welcome to our Website
+      </h1>
 
-      <motion.button
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20 hover:bg-primary/20 transition-all duration-300 z-50 group"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ 
-          opacity: scrollYProgress.get() > 0.1 ? 1 : 0,
-          y: scrollYProgress.get() > 0.1 ? 0 : 20
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <IoArrowUpOutline className="w-6 h-6 text-primary group-hover:animate-bounce" />
-      </motion.button>
+      <p className="text-gray-600 mb-6">
+        This is a responsive demo site built with Next.js and Tailwind CSS.
+      </p>
+
+      <div className="flex items-center gap-4">
+        <h2 className="text-xl font-semibold">Services</h2>
+
+        <Link href="/services">
+          <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            Lift
+          </button>
+        </Link>
+      </div>
     </main>
-  )
+  );
 }
