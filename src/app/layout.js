@@ -1,5 +1,4 @@
 import "./globals.css";
-import Navbar from "../components/Navbar";
 import { ThemeProvider } from "next-themes";
 
 export const metadata = {
