@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Order() {
+  const router = useRouter();
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -11,6 +13,17 @@ export default function Order() {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+
+  // Redirect to home page after popup closes
+  useEffect(() => {
+    if (submitted) {
+      const redirectTimer = setTimeout(() => {
+        router.push("/");
+      }, 3000);
+
+      return () => clearTimeout(redirectTimer);
+    }
+  }, [submitted, router]);
 
   // Email validation regex
   const validateEmail = (email) => {
@@ -63,7 +76,6 @@ export default function Order() {
       localStorage.setItem("orderForm", JSON.stringify(form));
       setSubmitted(true);
       setForm({ name: "", phone: "", email: "" });
-      setTimeout(() => setSubmitted(false), 3000);
     }
   };
 
