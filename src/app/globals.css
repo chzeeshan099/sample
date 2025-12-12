@@ -10,6 +10,37 @@
   .drop-shadow-glow {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
   }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(0.95) translateY(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-bounce {
+    animation: bounce 0.6s ease-out;
+  }
+
+  @keyframes scale-up {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-up {
+    animation: scale-up 0.5s ease-out;
+  }
 }
 
 @layer base {
